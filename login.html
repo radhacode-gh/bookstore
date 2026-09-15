@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Glb Book Store</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 20px;
+            font-family: Arial;
+        }
+
+        .main {
+            width: 900px;
+            height: 415px;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            height: 51px;
+        }
+
+        .logo {
+            width: 16%;
+            background-color: #f7bd8c;
+            border-right: 1px solid black;
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        .website {
+            width: 84%;
+            background-color: #f7bd8c;
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        /* Menu */
+        .menu {
+            display: flex;
+            height: 53px;
+        }
+
+        .menu div {
+            background-color: #fde7d7;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            text-align: center;
+            padding-top: 16px;
+            cursor: pointer;
+        }
+
+        .home {
+            width: 16%;
+        }
+
+        .login {
+            width: 24%;
+        }
+
+        .registration {
+            width: 20%;
+        }
+
+        .catalogue {
+            width: 23%;
+        }
+
+        .cart {
+            width: 17%;
+        }
+
+        .menu div:hover {
+            background-color: #f7bd8c;
+        }
+
+        /* Content */
+        .content {
+            display: flex;
+            height: 310px;
+        }
+
+        /* Left side */
+        .left {
+            width: 16%;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            padding: 5px 10px;
+        }
+
+        .left div {
+            height: 55px;
+            padding-top: 5px;
+        }
+
+        /* Right side */
+        .right {
+            width: 84%;
+            border-top: 1px solid black;
+            text-align: center;
+            padding-top: 45px;
+        }
+
+        /* Login Page */
+        .loginPage {
+            font-size: 17px;
+        }
+
+        .loginTitle {
+            margin-bottom: 18px;
+        }
+
+        .formRow {
+            margin: 12px;
+        }
+
+        .formRow label {
+            display: inline-block;
+            width: 130px;
+            text-align: left;
+        }
+
+        .formRow input {
+            width: 160px;
+            height: 27px;
+            border: 3px solid black;
+        }
+
+        .buttons {
+            margin-top: 35px;
+        }
+
+        button {
+            width: 120px;
+            height: 48px;
+            background-color: white;
+            color: red;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .submit {
+            border: 4px double black;
+            margin-right: 20px;
+        }
+
+        .reset {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <!-- Header -->
+        <div class="header">
+
+            <div class="logo">
+                Logo
+            </div>
+
+            <div class="website">
+                Glb Book Store
+            </div>
+
+        </div>
+
+
+        <!-- Menu -->
+        <div class="menu">
+
+            <div class="home" onclick="home()">
+                Home
+            </div>
+
+            <div class="login" onclick="login()">
+                Login
+            </div>
+
+            <div class="registration" onclick="registration()">
+                Registration
+            </div>
+
+            <div class="catalogue" onclick="catalogue()">
+                Catalogue
+            </div>
+
+            <div class="cart" onclick="cart()">
+                Cart
+            </div>
+
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="content">
+
+            <!-- Left Side -->
+            <div class="left">
+
+                <div>CSE</div>
+                <div>ECE</div>
+                <div>EEE</div>
+                <div>CIVIL</div>
+
+            </div>
+
+
+            <!-- Right Side -->
+            <div class="right" id="rightContent">
+
+                Description of the WebSite
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function login() {
+
+            document.getElementById("rightContent").innerHTML =
+
+            '<div class="loginPage">' +
+
+                '<div class="loginTitle">Login Page</div>' +
+
+                '<div class="formRow">' +
+                    '<label>User Name:</label>' +
+                    '<input type="text" id="username">' +
+                '</div>' +
+
+                '<div class="formRow">' +
+                    '<label>Password:</label>' +
+                    '<input type="password" id="password">' +
+                '</div>' +
+
+                '<div class="buttons">' +
+                    '<button class="submit" onclick="submitLogin()">Submit</button>' +
+                    '<button class="reset" onclick="resetLogin()">Reset</button>' +
+                '</div>' +
+
+            '</div>';
+        }
+
+
+        function submitLogin() {
+
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username == "" || password == "") {
+                alert("Please enter User Name and Password");
+            }
+            else {
+                alert("Login Successful");
+            }
+        }
+
+
+        function resetLogin() {
+
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+
+        }
+
+
+        function home() {
+
+            document.getElementById("rightContent").innerHTML =
+                "Description of the WebSite";
+
+        }
+
+
+        function registration() {
+
+            document.getElementById("rightContent").innerHTML =
+                "<h3>Registration Page</h3>";
+
+        }
+
+
+        function catalogue() {
+
+            document.getElementById("rightContent").innerHTML =
+                "<h3>Catalogue Page</h3>";
+
+        }
+
+
+        function cart() {
+
+            document.getElementById("rightContent").innerHTML =
+                "<h3>Cart Page</h3>";
+
+        }
+
+    </script>
+
+</body>
+</html>
