@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Glb Book Store</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        .main {
+            width: 830px;
+            margin: 20px auto;
+            border: 1px solid black;
+        }
+
+        .header {
+            display: flex;
+            width: 830px;
+            height: 56px;
+        }
+
+        .logo {
+            width: 91px;
+            height: 56px;
+            background-color: #f7bd8c;
+            border-right: 1px solid black;
+            text-align: center;
+            padding-top: 18px;
+            font-size: 17px;
+        }
+
+        .website {
+            width: 739px;
+            height: 56px;
+            background-color: #f7bd8c;
+            text-align: center;
+            padding-top: 16px;
+            font-size: 18px;
+        }
+
+        .menu {
+            display: flex;
+            width: 830px;
+            height: 36px;
+        }
+
+        .menu div {
+            height: 36px;
+            background-color: #fde7d7;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            text-align: center;
+            padding-top: 9px;
+            cursor: pointer;
+        }
+
+        .home {
+            width: 91px;
+        }
+
+        .login {
+            width: 169px;
+        }
+
+        .registration {
+            width: 268px;
+        }
+
+        .catalogue {
+            width: 115px;
+            border-left: 1px solid black;
+        }
+
+        .cart {
+            width: 187px;
+            border-right: none !important;
+        }
+
+        .menu div:hover {
+            background-color: #f7bd8c;
+        }
+
+        .content {
+            display: flex;
+            width: 830px;
+        }
+
+        .left {
+            width: 91px;
+            min-height: 160px;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            padding-top: 8px;
+            padding-left: 10px;
+        }
+
+        .left div {
+            height: 30px;
+        }
+
+        .cartContent {
+            width: 739px;
+            min-height: 160px;
+            border-top: 1px solid black;
+        }
+
+        .cartHeader {
+            display: flex;
+            width: 739px;
+            height: 28px;
+        }
+
+        .cartHeader div {
+            text-align: center;
+            padding-top: 4px;
+            font-size: 16px;
+        }
+
+        .bookName {
+            width: 220px;
+            text-align: left !important;
+            padding-left: 10px !important;
+        }
+
+        .price {
+            width: 100px;
+        }
+
+        .quantity {
+            width: 120px;
+        }
+
+        .amount {
+            width: 299px;
+        }
+
+        .cartRow {
+            display: flex;
+            width: 739px;
+            height: 30px;
+            font-size: 16px;
+        }
+
+        .cartRow div {
+            text-align: center;
+            padding-top: 4px;
+        }
+
+        .cartRow .bookName {
+            text-align: left;
+        }
+
+        .total {
+            display: flex;
+            width: 739px;
+            height: 30px;
+            font-size: 16px;
+        }
+
+        .totalText {
+            width: 320px;
+            padding-left: 10px;
+            padding-top: 4px;
+        }
+
+        .totalAmount {
+            width: 100px;
+            padding-top: 4px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="main">
+
+    <div class="header">
+
+        <div class="logo">
+            Logo
+        </div>
+
+        <div class="website">
+            Glb Book Store
+        </div>
+
+    </div>
+
+    <div class="menu">
+
+        <div class="home" onclick="home()">
+            Home
+        </div>
+
+        <div class="login" onclick="login()">
+            Login
+        </div>
+
+        <div class="registration" onclick="registration()">
+            Registration
+        </div>
+
+        <div class="catalogue" onclick="catalogue()">
+            Catalogue
+        </div>
+
+        <div class="cart" onclick="cartPage()">
+            Cart
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="left">
+
+            <div>CSE</div>
+            <div>ECE</div>
+            <div>EEE</div>
+            <div>CIVIL</div>
+
+        </div>
+
+        <div class="cartContent">
+
+            <div class="cartHeader">
+
+                <div class="bookName">
+                    Book name
+                </div>
+
+                <div class="price">
+                    Price
+                </div>
+
+                <div class="quantity">
+                    Quantity
+                </div>
+
+                <div class="amount">
+                    Amount
+                </div>
+
+            </div>
+
+            <div class="cartRow">
+
+                <div class="bookName">
+                    Java 2
+                </div>
+
+                <div class="price">
+                    $35.5
+                </div>
+
+                <div class="quantity">
+                    2
+                </div>
+
+                <div class="amount">
+                    $70
+                </div>
+
+            </div>
+
+            <div class="cartRow">
+
+                <div class="bookName">
+                    XML bible
+                </div>
+
+                <div class="price">
+                    $40.5
+                </div>
+
+                <div class="quantity">
+                    1
+                </div>
+
+                <div class="amount">
+                    $40.5
+                </div>
+
+            </div>
+
+            <div class="total">
+
+                <div class="totalText">
+                    Total amount
+                </div>
+
+                <div class="totalAmount">
+                    - $130.5
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    function home() {
+        alert("Home Page");
+    }
+
+    function login() {
+        alert("Login Page");
+    }
+
+    function registration() {
+        alert("Registration Page");
+    }
+
+    function catalogue() {
+        alert("Catalogue Page");
+    }
+
+    function cartPage() {
+        alert("Cart Page");
+    }
+
+</script>
+
+</body>
+</html>
