@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Glb Book Store</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        .main {
+            width: 830px;
+            margin: 20px auto;
+            border: 1px solid black;
+        }
+
+        .header {
+            display: flex;
+            width: 830px;
+            height: 56px;
+        }
+
+        .logo {
+            width: 91px;
+            height: 56px;
+            background-color: #f7bd8c;
+            border-right: 1px solid black;
+            text-align: center;
+            padding-top: 18px;
+            font-size: 17px;
+        }
+
+        .website {
+            width: 739px;
+            height: 56px;
+            background-color: #f7bd8c;
+            text-align: center;
+            padding-top: 16px;
+            font-size: 18px;
+        }
+
+        .menu {
+            display: flex;
+            width: 830px;
+            height: 36px;
+        }
+
+        .menu div {
+            height: 36px;
+            background-color: #fde7d7;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            text-align: center;
+            padding-top: 9px;
+            cursor: pointer;
+        }
+
+        .home {
+            width: 91px;
+        }
+
+        .login {
+            width: 169px;
+        }
+
+        .registration {
+            width: 268px;
+        }
+
+        .catalogue {
+            width: 115px;
+            border-left: 1px solid black;
+        }
+
+        .cart {
+            width: 187px;
+            border-right: none !important;
+        }
+
+        .menu div:hover {
+            background-color: #f7bd8c;
+        }
+
+        .content {
+            display: flex;
+            width: 830px;
+        }
+
+        .left {
+            width: 91px;
+            min-height: 560px;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            padding-top: 8px;
+            padding-left: 10px;
+        }
+
+        .left div {
+            height: 52px;
+            padding-top: 5px;
+        }
+
+        .registrationPage {
+            width: 739px;
+            min-height: 560px;
+            border-top: 1px solid black;
+            padding: 20px 35px;
+        }
+
+        .registrationPage h3 {
+            text-align: center;
+            margin: 5px 0 25px 0;
+            font-size: 18px;
+        }
+
+        .formRow {
+            display: flex;
+            margin-bottom: 16px;
+            font-size: 16px;
+            align-items: center;
+        }
+
+        .label {
+            width: 190px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 250px;
+            height: 28px;
+            border: 1px solid black;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        select {
+            width: 80px;
+            height: 28px;
+            margin-right: 8px;
+            border: 1px solid black;
+        }
+
+        textarea {
+            width: 300px;
+            height: 70px;
+            border: 1px solid black;
+            resize: none;
+        }
+
+        .buttons {
+            margin-left: 190px;
+            margin-top: 25px;
+        }
+
+        .buttons button {
+            width: 100px;
+            height: 35px;
+            margin-right: 20px;
+            background-color: white;
+            border: 1px solid black;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .buttons button:hover {
+            background-color: #fde7d7;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="main">
+
+    <div class="header">
+
+        <div class="logo">
+            Logo
+        </div>
+
+        <div class="website">
+            Glb Book Store
+        </div>
+
+    </div>
+
+    <div class="menu">
+
+        <div class="home" onclick="home()">
+            Home
+        </div>
+
+        <div class="login" onclick="login()">
+            Login
+        </div>
+
+        <div class="registration" onclick="registration()">
+            Registration
+        </div>
+
+        <div class="catalogue" onclick="catalogue()">
+            Catalogue
+        </div>
+
+        <div class="cart" onclick="cartPage()">
+            Cart
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="left">
+
+            <div>CSE</div>
+            <div>ECE</div>
+            <div>EEE</div>
+            <div>CIVIL</div>
+
+        </div>
+
+        <div class="registrationPage">
+
+            <h3>Registration Page</h3>
+
+            <div class="formRow">
+
+                <div class="label">
+                    Name:
+                </div>
+
+                <input type="text" id="name">
+
+            </div>
+
+            <div class="formRow">
+
+                <div class="label">
+                    Password:
+                </div>
+
+                <input type="password" id="password">
+
+            </div>
+
+            <div class="formRow">
+
+                <div class="label">
+                    E-mail ID:
+                </div>
+
+                <input type="text" id="email">
+
+            </div>
+
+            <div class="formRow">
+
+                <div class="label">
+                    Phone Number:
+                </div>
+
+                <input type="text" id="phone">
+
+            </div>
+
+            <div class="formRow">
+
+                <div class="label">
+                    Sex:
+                </div>
+
+                <label>
+                    <input type="radio" name="sex" value="Male">
+                    Male
+                </label>
+
+                <label>
+                    <input type="radio" name="sex" value="Female">
+                    Female
+                </label>
+
+            </div>
+
+            <div class="formRow">
+
+                <div class="label">
+                    Date of Birth:
+                </div>
+
+                <select id="day">
+                    <option>Day</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                    <option>31</option>
+                </select>
+
+                <select id="month">
+                    <option>Month</option>
+                    <option>Jan</option>
+                    <option>Feb</option>
+                    <option>Mar</option>
+                    <option>Apr</option>
+                    <option>May</option>
+                    <option>Jun</option>
+                    <option>Jul</option>
+                    <option>Aug</option>
+                    <option>Sep</option>
+                    <option>Oct</option>
+                    <option>Nov</option>
+                    <option>Dec</option>
+                </select>
+
+                <select id="year">
+                    <option>Year</option>
+                    <option>2000</option>
+                    <option>2001</option>
+                    <option>2002</option>
+                    <option>2003</option>
+                    <option>2004</option>
+                    <option>2005</option>
+                    <option>2006</option>
+                    <option>2007</option>
+                    <option>2008</option>
+                    <option>2009</option>
+                    <option>2010</option>
+                </select>
+
+            </div>
+
+            <div class="formRow">
+
+                <div class="label">
+                    Languages Known:
+                </div>
+
+                <label>
+                    <input type="checkbox">
+                    English
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Telugu
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Hindi
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Tamil
+                </label>
+
+            </div>
+
+            <div class="formRow">
+
+                <div class="label">
+                    Address:
+                </div>
+
+                <textarea id="address"></textarea>
+
+            </div>
+
+            <div class="buttons">
+
+                <button onclick="submitForm()">
+                    Submit
+                </button>
+
+                <button onclick="resetForm()">
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    function submitForm() {
+
+        var name = document.getElementById("name").value;
+
+        if (name == "") {
+            alert("Please enter your name");
+        }
+        else {
+            alert("Registration successful");
+        }
+
+    }
+
+    function resetForm() {
+
+        document.getElementById("name").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("address").value = "";
+
+    }
+
+    function home() {
+        alert("Home Page");
+    }
+
+    function login() {
+        alert("Login Page");
+    }
+
+    function registration() {
+        alert("Registration Page");
+    }
+
+    function catalogue() {
+        alert("Catalogue Page");
+    }
+
+    function cartPage() {
+        alert("Cart Page");
+    }
+
+</script>
+
+</body>
+</html>
