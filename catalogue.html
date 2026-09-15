@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Glb Book Store</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .main {
+            width: 830px;
+            margin: 20px auto;
+            border: 1px solid black;
+        }
+
+        .header {
+            display: flex;
+            width: 830px;
+            height: 56px;
+        }
+
+        .logo {
+            width: 91px;
+            height: 56px;
+            background-color: #f7bd8c;
+            border-right: 1px solid black;
+            text-align: center;
+            padding-top: 18px;
+            font-size: 17px;
+        }
+
+        .website {
+            width: 739px;
+            height: 56px;
+            background-color: #f7bd8c;
+            text-align: center;
+            padding-top: 16px;
+            font-size: 18px;
+        }
+
+        .menu {
+            display: flex;
+            width: 830px;
+            height: 36px;
+        }
+
+        .menu div {
+            height: 36px;
+            background-color: #fde7d7;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            text-align: center;
+            padding-top: 9px;
+            cursor: pointer;
+        }
+
+        .home {
+            width: 91px;
+        }
+
+        .login {
+            width: 169px;
+        }
+
+        .registration {
+            width: 268px;
+        }
+
+        .catalogue {
+            width: 115px;
+            border-left: 1px solid black;
+        }
+
+        .cart {
+            width: 187px;
+            border-right: none !important;
+        }
+
+        .menu div:hover {
+            background-color: #f7bd8c;
+        }
+
+        .content {
+            display: flex;
+            width: 830px;
+        }
+
+        .left {
+            width: 91px;
+            min-height: 640px;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            padding-top: 8px;
+            padding-left: 10px;
+        }
+
+        .left div {
+            height: 52px;
+            padding-top: 5px;
+        }
+
+        .books {
+            width: 739px;
+        }
+
+        .book {
+            display: flex;
+            width: 739px;
+            height: 160px;
+            border-top: 1px solid black;
+        }
+
+        .bookImage {
+            width: 169px;
+            height: 160px;
+            border-right: 1px solid black;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+        .bookImage img {
+            width: 115px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .details {
+            width: 268px;
+            height: 160px;
+            padding: 6px 10px;
+            font-size: 17px;
+            line-height: 28px;
+            border-right: 1px solid black;
+        }
+
+        .price {
+            width: 115px;
+            height: 160px;
+            border-right: 1px solid black;
+            padding-top: 57px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .addCart {
+            width: 187px;
+            height: 160px;
+            text-align: center;
+            padding-top: 55px;
+        }
+
+        .addCart button {
+            width: 155px;
+            height: 34px;
+            background-color: #f5c542;
+            border: 2px solid #777;
+            border-radius: 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .addCart button:hover {
+            background-color: #ffd966;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="main">
+
+    <div class="header">
+
+        <div class="logo">
+            Logo
+        </div>
+
+        <div class="website">
+            Glb Book Store
+        </div>
+
+    </div>
+
+    <div class="menu">
+
+        <div class="home" onclick="home()">
+            Home
+        </div>
+
+        <div class="login" onclick="login()">
+            Login
+        </div>
+
+        <div class="registration" onclick="registration()">
+            Registration
+        </div>
+
+        <div class="catalogue" onclick="catalogue()">
+            Catalogue
+        </div>
+
+        <div class="cart" onclick="showCart()">
+            Cart
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="left">
+
+            <div>CSE</div>
+            <div>ECE</div>
+            <div>EEE</div>
+            <div>CIVIL</div>
+
+        </div>
+
+        <div class="books">
+
+            <div class="book">
+
+                <div class="bookImage">
+                    <img src="https://covers.openlibrary.org/isbn/0764532367-M.jpg">
+                </div>
+
+                <div class="details">
+                    Book: XMLBible<br>
+                    Author: Winston<br>
+                    Publication: Wiley
+                </div>
+
+                <div class="price">
+                    $40.5
+                </div>
+
+                <div class="addCart">
+                    <button onclick="addCart('XMLBible')">
+                        Add to cart
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="book">
+
+                <div class="bookImage">
+                    <img src="https://covers.openlibrary.org/isbn/0136042597-M.jpg">
+                </div>
+
+                <div class="details">
+                    Book: AI<br>
+                    Author: S. Russell<br>
+                    Publication: Prentice Hall
+                </div>
+
+                <div class="price">
+                    $63
+                </div>
+
+                <div class="addCart">
+                    <button onclick="addCart('AI')">
+                        Add to cart
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="book">
+
+                <div class="bookImage">
+                    <img src="https://covers.openlibrary.org/isbn/0130355713-M.jpg">
+                </div>
+
+                <div class="details">
+                    Book: Java 2<br>
+                    Author: Watson<br>
+                    Publication: BPB Publications
+                </div>
+
+                <div class="price">
+                    $35.5
+                </div>
+
+                <div class="addCart">
+                    <button onclick="addCart('Java 2')">
+                        Add to cart
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="book">
+
+                <div class="bookImage">
+                    <img src="https://covers.openlibrary.org/isbn/0672312399-M.jpg">
+                </div>
+
+                <div class="details">
+                    Book: HTML in 24 hours<br>
+                    Author: Sam Peter<br>
+                    Publication: Sams Publication
+                </div>
+
+                <div class="price">
+                    $50
+                </div>
+
+                <div class="addCart">
+                    <button onclick="addCart('HTML in 24 hours')">
+                        Add to cart
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    var cart = [];
+
+    function addCart(book) {
+        cart.push(book);
+        alert(book + " added to cart");
+    }
+
+    function showCart() {
+
+        if (cart.length == 0) {
+            alert("Cart is empty");
+        }
+        else {
+            alert("Cart contains:\n\n" + cart.join("\n"));
+        }
+
+    }
+
+    function home() {
+        alert("Home Page");
+    }
+
+    function login() {
+        alert("Login Page");
+    }
+
+    function registration() {
+        alert("Registration Page");
+    }
+
+    function catalogue() {
+        alert("Catalogue Page");
+    }
+
+</script>
+
+</body>
+</html>
