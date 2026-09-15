@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GLB Book Store</title>
+
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial;
+        }
+
+        .main {
+            width: 895px;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        .top {
+            display: flex;
+            height: 40px;
+        }
+
+        .logo {
+            width: 147px;
+            background-color: #f5b980;
+            text-align: center;
+            padding-top: 10px;
+            border-right: 1px solid black;
+        }
+
+        .name {
+            width: 747px;
+            background-color: #f5b980;
+            text-align: center;
+            padding-top: 10px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            height: 41px;
+        }
+
+        .menu div {
+            text-align: center;
+            padding-top: 11px;
+            background-color: #fce5d6;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+        }
+
+        .home {
+            width: 147px;
+        }
+
+        .login {
+            width: 214px;
+        }
+
+        .registration {
+            width: 176px;
+        }
+
+        .catalogue {
+            width: 195px;
+        }
+
+        .cart {
+            width: 159px;
+        }
+
+        .content {
+            display: flex;
+            height: 122px;
+        }
+
+        .left {
+            width: 147px;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            padding-top: 5px;
+        }
+
+        .left div {
+            height: 26px;
+        }
+
+        .right {
+            width: 747px;
+            border-top: 1px solid black;
+            text-align: center;
+            padding-top: 48px;
+        }
+
+        .menu div:hover {
+            background-color: #f5b980;
+            cursor: pointer;
+        }
+
+        .left div:hover {
+            color: blue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <!-- Top Row -->
+        <div class="top">
+
+            <div class="logo">
+                Logo
+            </div>
+
+            <div class="name">
+                GLB Book Store
+            </div>
+
+        </div>
+
+        <!-- Menu Row -->
+        <div class="menu">
+
+            <div class="home" onclick="show('Home')">
+                Home
+            </div>
+
+            <div class="login" onclick="show('Login')">
+                Login
+            </div>
+
+            <div class="registration" onclick="show('Registration')">
+                Registration
+            </div>
+
+            <div class="catalogue" onclick="show('Catalogue')">
+                Catalogue
+            </div>
+
+            <div class="cart" onclick="show('Cart')">
+                Cart
+            </div>
+
+        </div>
+
+        <!-- Content Row -->
+        <div class="content">
+
+            <div class="left">
+                <div onclick="show('CSE')">CSE</div>
+                <div onclick="show('ECE')">ECE</div>
+                <div onclick="show('EEE')">EEE</div>
+                <div onclick="show('CIVIL')">CIVIL</div>
+            </div>
+
+            <div class="right" id="result">
+                Description of the WebSite
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function show(name) {
+            document.getElementById("result").innerHTML =
+                "You selected " + name;
+        }
+
+    </script>
+
+</body>
+</html>
