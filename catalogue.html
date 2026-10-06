@@ -1,372 +1,170 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <title>Glb Book Store</title>
+    <title>GL Bajaj Online Bookstore - Catalogue</title>
 
     <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
+            margin: 20px;
         }
 
-        .main {
-            width: 830px;
-            margin: 20px auto;
+        h1 {
+            text-align: center;
+            background-color: #f4b183;
+            padding: 15px;
             border: 1px solid black;
         }
 
-        .header {
-            display: flex;
-            width: 830px;
-            height: 56px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .logo {
-            width: 91px;
-            height: 56px;
-            background-color: #f7bd8c;
-            border-right: 1px solid black;
+        th, td {
+            border: 1px solid black;
+            padding: 12px;
             text-align: center;
-            padding-top: 18px;
-            font-size: 17px;
         }
 
-        .website {
-            width: 739px;
-            height: 56px;
-            background-color: #f7bd8c;
-            text-align: center;
-            padding-top: 16px;
-            font-size: 18px;
+        th {
+            background-color: #f4b183;
         }
 
         .menu {
-            display: flex;
-            width: 830px;
-            height: 36px;
-        }
-
-        .menu div {
-            height: 36px;
-            background-color: #fde7d7;
-            border-top: 1px solid black;
-            border-right: 1px solid black;
-            text-align: center;
-            padding-top: 9px;
-            cursor: pointer;
-        }
-
-        .home {
-            width: 91px;
-        }
-
-        .login {
-            width: 169px;
-        }
-
-        .registration {
-            width: 268px;
-        }
-
-        .catalogue {
-            width: 115px;
-            border-left: 1px solid black;
-        }
-
-        .cart {
-            width: 187px;
-            border-right: none !important;
-        }
-
-        .menu div:hover {
-            background-color: #f7bd8c;
-        }
-
-        .content {
-            display: flex;
-            width: 830px;
-        }
-
-        .left {
-            width: 91px;
-            min-height: 640px;
-            border-top: 1px solid black;
-            border-right: 1px solid black;
-            padding-top: 8px;
-            padding-left: 10px;
-        }
-
-        .left div {
-            height: 52px;
-            padding-top: 5px;
-        }
-
-        .books {
-            width: 739px;
+            background-color: #fde9d9;
         }
 
         .book {
-            display: flex;
-            width: 739px;
-            height: 160px;
-            border-top: 1px solid black;
+            width: 100px;
+            height: 130px;
         }
 
-        .bookImage {
-            width: 169px;
-            height: 160px;
-            border-right: 1px solid black;
-            text-align: center;
-            padding-top: 5px;
-        }
-
-        .bookImage img {
-            width: 115px;
-            height: 150px;
-            object-fit: contain;
-        }
-
-        .details {
-            width: 268px;
-            height: 160px;
-            padding: 6px 10px;
-            font-size: 17px;
-            line-height: 28px;
-            border-right: 1px solid black;
-        }
-
-        .price {
-            width: 115px;
-            height: 160px;
-            border-right: 1px solid black;
-            padding-top: 57px;
-            text-align: center;
-            font-size: 17px;
-        }
-
-        .addCart {
-            width: 187px;
-            height: 160px;
-            text-align: center;
-            padding-top: 55px;
-        }
-
-        .addCart button {
-            width: 155px;
-            height: 34px;
-            background-color: #f5c542;
-            border: 2px solid #777;
-            border-radius: 10px;
-            font-size: 15px;
+        .cart {
+            background-color: #f4b183;
+            border: 1px solid black;
+            padding: 8px 15px;
             cursor: pointer;
         }
 
-        .addCart button:hover {
-            background-color: #ffd966;
+        .cart:hover {
+            background-color: #e69138;
         }
 
-    </style>
+        a {
+            color: black;
+            text-decoration: none;
+        }
 
+        a:hover {
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="main">
+   
 
-    <div class="header">
+    <table>
 
-        <div class="logo">
-            Logo
-        </div>
+       
+       
 
-        <div class="website">
-            Glb Book Store
-        </div>
+        <tr>
+            <th>Book Cover</th>
+            <th>Book Details</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
 
-    </div>
+        <tr>
+            <td>
+                <img class="book"
+                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlHAZYskcjTsfXh4bT1oOenvlavEo5e2veeK7FRwi33A&s=10"
+                     alt="XML Bible">
+            </td>
 
-    <div class="menu">
+            <td>
+                <b>XML Bible</b><br>
+                Publication: Wiley
+            </td>
 
-        <div class="home" onclick="home()">
-            Home
-        </div>
+            <td>Winston</td>
 
-        <div class="login" onclick="login()">
-            Login
-        </div>
+            <td>$40.5</td>
 
-        <div class="registration" onclick="registration()">
-            Registration
-        </div>
+            <td>
+                <button class="cart">Add to Cart</button>
+            </td>
+        </tr>
 
-        <div class="catalogue" onclick="catalogue()">
-            Catalogue
-        </div>
+        <tr>
+            <td>
+                <img class="book"
+                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDaeVTgnyjhsf8nJOMUSIFiareDL4DSOcwzDz0QLZXbw&s=10"
+                     alt="AI">
+            </td>
 
-        <div class="cart" onclick="showCart()">
-            Cart
-        </div>
+            <td>
+                <b>Artificial Intelligence</b><br>
+                Publication: Prentice Hall
+            </td>
 
-    </div>
+            <td>S. Russell</td>
 
-    <div class="content">
+            <td>$63</td>
 
-        <div class="left">
+            <td>
+                <button class="cart">Add to Cart</button>
+            </td>
+        </tr>
 
-            <div>CSE</div>
-            <div>ECE</div>
-            <div>EEE</div>
-            <div>CIVIL</div>
+        <tr>
+            <td>
+                <img class="book"
+                     src="https://covers.openlibrary.org/b/isbn/9780132222204-M.jpg"
+                     alt="Java 2">
+            </td>
 
-        </div>
+            <td>
+                <b>Java 2</b><br>
+                Publication: BPB Publications
+            </td>
 
-        <div class="books">
+            <td>Watson</td>
 
-            <div class="book">
+            <td>$35.5</td>
 
-                <div class="bookImage">
-                    <img src="https://covers.openlibrary.org/isbn/0764532367-M.jpg">
-                </div>
+            <td>
+                <button class="cart">Add to Cart</button>
+            </td>
+        </tr>
 
-                <div class="details">
-                    Book: XMLBible<br>
-                    Author: Winston<br>
-                    Publication: Wiley
-                </div>
+        <tr>
+            <td>
+                <img class="book"
+                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDgkteM93IAD-33O2dsPyMnYnr8l4S9MzAJoYB7BAJ8Q&s=10"
+                     alt="HTML in 24 Hours">
+            </td>
 
-                <div class="price">
-                    $40.5
-                </div>
+            <td>
+                <b>HTML in 24 Hours</b><br>
+                Publication: Sams Publication
+            </td>
 
-                <div class="addCart">
-                    <button onclick="addCart('XMLBible')">
-                        Add to cart
-                    </button>
-                </div>
+            <td>Sam Peter</td>
 
-            </div>
+            <td>$50</td>
 
-            <div class="book">
+            <td>
+                <button class="cart">Add to Cart</button>
+            </td>
+        </tr>
 
-                <div class="bookImage">
-                    <img src="https://covers.openlibrary.org/isbn/0136042597-M.jpg">
-                </div>
-
-                <div class="details">
-                    Book: AI<br>
-                    Author: S. Russell<br>
-                    Publication: Prentice Hall
-                </div>
-
-                <div class="price">
-                    $63
-                </div>
-
-                <div class="addCart">
-                    <button onclick="addCart('AI')">
-                        Add to cart
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="book">
-
-                <div class="bookImage">
-                    <img src="https://covers.openlibrary.org/isbn/0130355713-M.jpg">
-                </div>
-
-                <div class="details">
-                    Book: Java 2<br>
-                    Author: Watson<br>
-                    Publication: BPB Publications
-                </div>
-
-                <div class="price">
-                    $35.5
-                </div>
-
-                <div class="addCart">
-                    <button onclick="addCart('Java 2')">
-                        Add to cart
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="book">
-
-                <div class="bookImage">
-                    <img src="https://covers.openlibrary.org/isbn/0672312399-M.jpg">
-                </div>
-
-                <div class="details">
-                    Book: HTML in 24 hours<br>
-                    Author: Sam Peter<br>
-                    Publication: Sams Publication
-                </div>
-
-                <div class="price">
-                    $50
-                </div>
-
-                <div class="addCart">
-                    <button onclick="addCart('HTML in 24 hours')">
-                        Add to cart
-                    </button>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<script>
-
-    var cart = [];
-
-    function addCart(book) {
-        cart.push(book);
-        alert(book + " added to cart");
-    }
-
-    function showCart() {
-
-        if (cart.length == 0) {
-            alert("Cart is empty");
-        }
-        else {
-            alert("Cart contains:\n\n" + cart.join("\n"));
-        }
-
-    }
-
-    function home() {
-        alert("Home Page");
-    }
-
-    function login() {
-        alert("Login Page");
-    }
-
-    function registration() {
-        alert("Registration Page");
-    }
-
-    function catalogue() {
-        alert("Catalogue Page");
-    }
-
-</script>
+    </table>
 
 </body>
 </html>
