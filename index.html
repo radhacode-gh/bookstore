@@ -18,14 +18,14 @@
             background-color: #f5f9ff;
         }
 
-        /* MAIN BORDER */
+        
         .main-container {
             width: 100%;
             min-height: 100vh;
             border: 2px solid black;
         }
 
-        /* TOP COLLEGE NAME */
+    
         .college-name {
             height: 60px;
             display: flex;
@@ -40,7 +40,7 @@
             font-weight: bold;
         }
 
-        /* LOGO + BOOKSTORE AREA */
+        
         .bookstore-header {
             height: 77px;
 
@@ -72,7 +72,7 @@
             font-weight: bold;
         }
 
-        /* NAVIGATION */
+        
         .navigation {
             height: 47px;
 
@@ -108,7 +108,7 @@
             background-color: #bfdbfe;
         }
 
-        /* MAIN BODY */
+    
         .body-area {
             display: grid;
             grid-template-columns: 20% 80%;
@@ -116,7 +116,7 @@
             min-height: 428px;
         }
 
-        /* LEFT SIDE */
+    
         .left-panel {
             background-color: #dbeafe;
 
@@ -142,7 +142,7 @@
             cursor: pointer;
         }
 
-        /* RIGHT SIDE */
+        
         .right-panel {
             background-color: white;
 
@@ -151,7 +151,7 @@
             overflow: auto;
         }
 
-        /* HOME */
+    
         .home-content {
             height: 428px;
 
@@ -163,7 +163,7 @@
             font-weight: bold;
         }
 
-        /* PAGE IFRAME */
+    
 
         #contentFrame {
             width: 100%;
@@ -175,6 +175,37 @@
 
             display: none;
         }
+        
+.footer {
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #2563eb;
+    color: white;
+
+    border-top: 1px solid black;
+
+    font-size: 15px;
+    font-weight: bold;
+}
+
+ .footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer a:hover {
+    color: #dbeafe;
+}
+
+.footer span {
+    margin: 0 15px;
+}
+    
+  
 
     </style>
 </head>
@@ -183,13 +214,13 @@
 
 <div class="main-container">
 
-    <!-- COLLEGE NAME -->
+    
     <div class="college-name">
         GLB INSTITUTE OF TECHNOLOGY AND MANAGEMENT
     </div>
 
 
-    <!-- LOGO + ONLINE BOOKSTORE -->
+    
     <div class="bookstore-header">
 
         <div class="logo">
@@ -203,7 +234,7 @@
     </div>
 
 
-    <!-- NAVIGATION -->
+    
     <div class="navigation">
 
         <a href="#" onclick="showHome(); return false;">
@@ -229,11 +260,11 @@
     </div>
 
 
-    <!-- BODY -->
+    
     <div class="body-area">
 
 
-        <!-- LEFT PANEL -->
+        
         <div class="left-panel">
 
             <div class="branch-link">
@@ -263,11 +294,11 @@
         </div>
 
 
-        <!-- RIGHT PANEL -->
+        
         <div class="right-panel" id="rightPanel">
 
 
-            <!-- HOME CONTENT -->
+        
             <div id="homeContent" class="home-content">
 
                 Find your favorite books easily at affordable prices.
@@ -275,7 +306,7 @@
             </div>
 
 
-            <!-- OTHER PAGES LOAD HERE -->
+            
             <iframe
                 id="contentFrame"
                 name="contentFrame">
@@ -286,12 +317,23 @@
 
     </div>
 
+<div class="footer">
+    <span>Roll No: 123456</span>
+    <span>|</span>
+    <span>
+        GitHub Repository:
+        <a href="https://github.com/yourusername/gl-bajaj-bookstore" target="_blank">
+            View Repository
+        </a>
+    </span>
+</div>
+
 </div>
 
 
 <script>
 
-    /* OPEN LOGIN / REGISTRATION / CATALOGUE / CART */
+    
 
     function openPage(page) {
 
@@ -305,7 +347,7 @@
     }
 
 
-    /* HOME */
+
 
     function showHome() {
 
@@ -319,7 +361,7 @@
     }
 
 
-    /* CSE / ECE / EEE / CIVIL */
+    
 
     function blankPage() {
 
