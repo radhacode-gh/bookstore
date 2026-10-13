@@ -64,14 +64,15 @@
 </head>
 
 <body>
+    
+<h1>GL Bajaj Online Bookstore — Catalogue</h1>
 
-   
+<p style="text-align:right;">
+    <a href="cart.html">View Shopping Cart 🛒</a>
+</p>
 
-    <table>
-
-       
-       
-
+<table>
+    <thead>
         <tr>
             <th>Book Cover</th>
             <th>Book Details</th>
@@ -79,47 +80,38 @@
             <th>Price</th>
             <th>Action</th>
         </tr>
+    </thead>
 
+    <tbody>
         <tr>
             <td>
                 <img class="book"
                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlHAZYskcjTsfXh4bT1oOenvlavEo5e2veeK7FRwi33A&s=10"
                      alt="XML Bible">
             </td>
-
-            <td>
-                <b>XML Bible</b><br>
-                Publication: Wiley
-            </td>
-
+            <td><b>XML Bible</b><br>Publication: Wiley</td>
             <td>Winston</td>
-
-            <td>$40.5</td>
-
-            <td>
-                <button class="cart">Add to Cart</button>
-            </td>
+            <td>₹405.00</td>
+            <td><button class="cart"
+                onclick="addToCart('xml', 'XML Bible', 405)">
+                Add to Cart
+            </button></td>
         </tr>
 
         <tr>
             <td>
                 <img class="book"
                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDaeVTgnyjhsf8nJOMUSIFiareDL4DSOcwzDz0QLZXbw&s=10"
-                     alt="AI">
+                     alt="Artificial Intelligence">
             </td>
-
-            <td>
-                <b>Artificial Intelligence</b><br>
-                Publication: Prentice Hall
-            </td>
-
+            <td><b>Artificial Intelligence</b><br>
+                Publication: Prentice Hall</td>
             <td>S. Russell</td>
-
-            <td>$63</td>
-
-            <td>
-                <button class="cart">Add to Cart</button>
-            </td>
+            <td>₹630.00</td>
+            <td><button class="cart"
+                onclick="addToCart('ai', 'Artificial Intelligence', 630)">
+                Add to Cart
+            </button></td>
         </tr>
 
         <tr>
@@ -128,19 +120,14 @@
                      src="https://covers.openlibrary.org/b/isbn/9780132222204-M.jpg"
                      alt="Java 2">
             </td>
-
-            <td>
-                <b>Java 2</b><br>
-                Publication: BPB Publications
-            </td>
-
+            <td><b>Java 2</b><br>
+                Publication: BPB Publications</td>
             <td>Watson</td>
-
-            <td>$35.5</td>
-
-            <td>
-                <button class="cart">Add to Cart</button>
-            </td>
+            <td>₹355.00</td>
+            <td><button class="cart"
+                onclick="addToCart('java', 'Java 2', 355)">
+                Add to Cart
+            </button></td>
         </tr>
 
         <tr>
@@ -149,22 +136,44 @@
                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDgkteM93IAD-33O2dsPyMnYnr8l4S9MzAJoYB7BAJ8Q&s=10"
                      alt="HTML in 24 Hours">
             </td>
-
-            <td>
-                <b>HTML in 24 Hours</b><br>
-                Publication: Sams Publication
-            </td>
-
+            <td><b>HTML in 24 Hours</b><br>
+                Publication: Sams Publication</td>
             <td>Sam Peter</td>
-
-            <td>$50</td>
-
-            <td>
-                <button class="cart">Add to Cart</button>
-            </td>
+            <td>₹500.00</td>
+            <td><button class="cart"
+                onclick="addToCart('html24', 'HTML in 24 Hours', 500)">
+                Add to Cart
+            </button></td>
         </tr>
+    </tbody>
+</table>
 
-    </table>
+<script>
+    function addToCart(id, name, price) {
+        let cart = JSON.parse(
+            localStorage.getItem('bookstoreCart') || '{}'
+        );
+
+        if (cart[id]) {
+            cart[id].quantity += 1;
+        } else {
+            cart[id] = {
+                id: id,
+                name: name,
+                price: price,
+                quantity: 1
+            };
+        }
+
+        localStorage.setItem('bookstoreCart', JSON.stringify(cart));
+
+        alert(name + ' added to cart!');
+    }
+</script>
+
+   
+
+    
 
 </body>
 </html>
