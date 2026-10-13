@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart | GL Bajaj Bookstore</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f5f9ff;
+            color: #1f2937;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1f4e79;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 10px 0 20px;
+            color: #1f4e79;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th, td {
+            border: 1px solid #2f75b5;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2f75b5;
+            color: white;
+        }
+
+        .qty-btn, .remove-btn {
+            border: none;
+            padding: 7px 11px;
+            margin: 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .qty-btn {
+            background-color: #dbeafe;
+            color: #1f4e79;
+        }
+
+        .remove-btn {
+            background-color: #dc2626;
+            color: white;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 25px;
+            color: #1f4e79;
+        }
+
+        #emptyCart {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border: 1px solid #dbeafe;
+        }
+
+        @media (max-width: 650px) {
+            body {
+                margin: 10px;
+            }
+
+            th, td {
+                padding: 6px;
+                font-size: 12px;
+            }
+
+            .qty-btn, .remove-btn {
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Your Shopping Cart</h1>
+
+    <a class="back-link" href="catalogue.html">
+        ← Continue Shopping
+    </a>
+
+    <div id="emptyCart" hidden>
+        <h3>Your cart is empty!</h3>
+        <p>Add some books from the catalogue.</p>
+        <a href="catalogue.html">Browse Books</a>
+    </div>
+
+    <table id="cartTable">
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="cartItems"></tbody>
+    </table>
+
+    <div class="total" id="grandTotal">
+        Total: ₹0.00
+    </div>
+
+    <script>
+        const formatINR = amount =>
+            amount.toLocaleString('en-IN', {
+                style: 'currency',
+                currency: 'INR'
+            });
+
+        function getCart() {
+            return JSON.parse(
+                localStorage.getItem('bookstoreCart') || '{}'
+            );
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem(
+                'bookstoreCart',
+                JSON.stringify(cart)
+            );
+
+            displayCart();
+        }
+
+        function changeQuantity(id, change) {
+            const cart = getCart();
+
+            if (!cart[id]) return;
+
+            cart[id].quantity += change;
+
+            // Remove the book if its quantity reaches zero.
+            if (cart[id].quantity <= 0) {
+                delete cart[id];
+            }
+
+            saveCart(cart);
+        }
+
+        function removeBook(id) {
+            const cart = getCart();
+            delete cart[id];
+            saveCart(cart);
+        }
+
+        function displayCart() {
+            const cart = getCart();
+            const tbody = document.getElementById('cartItems');
+            const table = document.getElementById('cartTable');
+            const emptyMessage = document.getElementById('emptyCart');
+
+            tbody.innerHTML = '';
+
+            const books = Object.values(cart);
+            let grandTotal = 0;
+
+            table.hidden = books.length === 0;
+            emptyMessage.hidden = books.length !== 0;
+
+            books.forEach(book => {
+                const amount = book.price * book.quantity;
+                grandTotal += amount;
+
+                const row = document.createElement('tr');
+
+                const nameCell = document.createElement('td');
+                nameCell.textContent = book.name;
+
+                const priceCell = document.createElement('td');
+                priceCell.textContent = formatINR(book.price);
+
+                const quantityCell = document.createElement('td');
+
+                const decrease = document.createElement('button');
+                decrease.className = 'qty-btn';
+                decrease.textContent = '−';
+                decrease.setAttribute('aria-label', 'Decrease quantity');
+                decrease.onclick = () => changeQuantity(book.id, -1);
+
+                const quantity = document.createElement('span');
+                quantity.textContent = ' ' + book.quantity + ' ';
+
+                const increase = document.createElement('button');
+                increase.className = 'qty-btn';
+                increase.textContent = '+';
+                increase.setAttribute('aria-label', 'Increase quantity');
+                increase.onclick = () => changeQuantity(book.id, 1);
+
+                quantityCell.append(decrease, quantity, increase);
+
+                const amountCell = document.createElement('td');
+                amountCell.textContent = formatINR(amount);
+
+                const actionCell = document.createElement('td');
+                const remove = document.createElement('button');
+                remove.className = 'remove-btn';
+                remove.textContent = 'Remove';
+                remove.onclick = () => removeBook(book.id);
+
+                actionCell.appendChild(remove);
+
+                row.append(
+                    nameCell,
+                    priceCell,
+                    quantityCell,
+                    amountCell,
+                    actionCell
+                );
+
+                tbody.appendChild(row);
+            });
+
+            document.getElementById('grandTotal').textContent =
+                'Total: ' + formatINR(grandTotal);
+        }
+
+        // Display the latest saved cart whenever this page opens.
+        displayCart();
+
+        // Update the cart if another tab changes its contents.
+        window.addEventListener('storage', event => {
+            if (event.key === 'bookstoreCart') {
+                displayCart();
+            }
+        });
+    </script>
+
+</body>
+</html>
