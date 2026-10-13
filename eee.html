@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEE Books | GL Bajaj Bookstore</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f9ff; color: #1f2937; margin: 20px; }
+        h1 { background: #2563eb; color: white; text-align: center; padding: 15px; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { border: 1px solid #b8cbe5; padding: 12px; text-align: center; }
+        th { background: #dbeafe; }
+        .cart-btn { background: #2563eb; color: white; border: 0; padding: 9px 12px; cursor: pointer; border-radius: 4px; }
+        .cart-btn:hover { background: #1e40af; }
+        a { color: #1d4ed8; }
+    </style>
+</head>
+<body data-branch="eee">
+    <h1 id="branchTitle">EEE Catalogue</h1>
+    <p><a href="index.html">← Home</a> |
+       <a href="cart.html">View Cart 🛒</a></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="bookRows"></tbody>
+    </table>
+
+    <script src="branch-catalogue.js"></script>
+</body>
+</html>
