@@ -1,100 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GL Bajaj Online Bookstore - Catalogue</title>
-
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            background-color: #2f75b5;
-            padding: 15px;
-            border: 1px solid black;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid black;
-            padding: 12px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #2f75b5;
-        }
-
-        .menu {
-            background-color: #d9eaf7;
-        }
-
-        .book {
-            width: 100px;
-            height: 130px;
-        }
-
-        .cart {
-            background-color: #2f75b5;
-            border: 1px solid black;
-            padding: 8px 15px;
-            cursor: pointer;
-        }
-
-        .cart:hover {
-            background-color: #1f4e79;
-        }
-
-        a {
-            color: black;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: blue;
-            text-decoration: underline;
-        }
-        .book-cover {
-            width: 85px;
-            height: 115px;
-            object-fit: contain;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; background-color: #2f75b5; padding: 15px; border: 1px solid black; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 12px; text-align: center; }
+        th { background-color: #2f75b5; }
+        .cart { background-color: #2f75b5; border: 1px solid black; padding: 8px 15px; cursor: pointer; }
+        .cart:hover { background-color: #1f4e79; }
+        .bar { display: flex; justify-content: space-between; align-items: center; margin: 10px 0; }
+        a { color: black; text-decoration: none; }
+        a:hover { color: blue; text-decoration: underline; }
     </style>
 </head>
+<body>
 
-<body data-branch="all">
-    
 <h1>GL Bajaj Online Bookstore — Catalogue</h1>
 
-<p style="text-align:right;">
+<div class="bar">
+    <label>Branch:
+        <select id="branchFilter">
+            <option value="all">All Books</option>
+            <option value="general">General</option>
+            <option value="cse">CSE</option>
+            <option value="ece">ECE</option>
+            <option value="eee">EEE</option>
+            <option value="civil">Civil</option>
+        </select>
+    </label>
     <a href="cart.html">View Shopping Cart 🛒</a>
-</p>
-
+</div>
 
 <table>
-    <thead>
-        <tr>
-            <th>Branch</th>
-            <th>Book Cover</th>
-            <th>Book Name</th>
-            <th>Author</th>
-            <th>Price</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody id="bookRows"></tbody>
-</table>
-
-<script src="branch-catalogue.js"></script>
-
-
-<!--<table>
     <thead>
         <tr>
             <th>Book Cover</th>
@@ -104,99 +45,84 @@
             <th>Action</th>
         </tr>
     </thead>
+    <tbody id="bookRows"></tbody>
+</table>
 
-    <tbody>
-        <tr>
-            <td>
-                <img class="book"
-                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlHAZYskcjTsfXh4bT1oOenvlavEo5e2veeK7FRwi33A&s=10"
-                     alt="XML Bible">
-            </td>
-            <td><b>XML Bible</b><br>Publication: Wiley</td>
-            <td>Winston</td>
-            <td>₹405.00</td>
-            <td><button class="cart"
-                onclick="addToCart('xml', 'XML Bible', 405)">
-                Add to Cart
-            </button></td>
-        </tr>
-
-        <tr>
-            <td>
-                <img class="book"
-                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDaeVTgnyjhsf8nJOMUSIFiareDL4DSOcwzDz0QLZXbw&s=10"
-                     alt="Artificial Intelligence">
-            </td>
-            <td><b>Artificial Intelligence</b><br>
-                Publication: Prentice Hall</td>
-            <td>S. Russell</td>
-            <td>₹630.00</td>
-            <td><button class="cart"
-                onclick="addToCart('ai', 'Artificial Intelligence', 630)">
-                Add to Cart
-            </button></td>
-        </tr>
-
-        <tr>
-            <td>
-                <img class="book"
-                     src="https://covers.openlibrary.org/b/isbn/9780132222204-M.jpg"
-                     alt="Java 2">
-            </td>
-            <td><b>Java 2</b><br>
-                Publication: BPB Publications</td>
-            <td>Watson</td>
-            <td>₹355.00</td>
-            <td><button class="cart"
-                onclick="addToCart('java', 'Java 2', 355)">
-                Add to Cart
-            </button></td>
-        </tr>
-
-        <tr>
-            <td>
-                <img class="book"
-                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDgkteM93IAD-33O2dsPyMnYnr8l4S9MzAJoYB7BAJ8Q&s=10"
-                     alt="HTML in 24 Hours">
-            </td>
-            <td><b>HTML in 24 Hours</b><br>
-                Publication: Sams Publication</td>
-            <td>Sam Peter</td>
-            <td>₹500.00</td>
-            <td><button class="cart"
-                onclick="addToCart('html24', 'HTML in 24 Hours', 500)">
-                Add to Cart
-            </button></td>
-        </tr>
-    </tbody>
-</table> 
-
+<script src="branch-catalogue.js"></script>
 <script>
-    function addToCart(id, name, price) {
-        let cart = JSON.parse(
-            localStorage.getItem('bookstoreCart') || '{}'
-        );
+    // The original 4 catalogue books
+    const generalBooks = [
+        { id: "xml", name: "XML Bible", publisher: "Wiley", author: "Winston", price: 405,
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlHAZYskcjTsfXh4bT1oOenvlavEo5e2veeK7FRwi33A&s=10" },
+        { id: "ai", name: "Artificial Intelligence", publisher: "Prentice Hall", author: "S. Russell", price: 630,
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDaeVTgnyjhsf8nJOMUSIFiareDL4DSOcwzDz0QLZXbw&s=10" },
+        { id: "java", name: "Java 2", publisher: "BPB Publications", author: "Watson", price: 355,
+          image: "https://covers.openlibrary.org/b/isbn/9780132222204-M.jpg" },
+        { id: "html24", name: "HTML in 24 Hours", publisher: "Sams Publication", author: "Sam Peter", price: 500,
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDgkteM93IAD-33O2dsPyMnYnr8l4S9MzAJoYB7BAJ8Q&s=10" }
+    ];
 
-        if (cart[id]) {
-            cart[id].quantity += 1;
-        } else {
-            cart[id] = {
-                id: id,
-                name: name,
-                price: price,
-                quantity: 1
-            };
+    const tableBody = document.getElementById("bookRows");
+
+    function renderCatalogue(filter) {
+        tableBody.innerHTML = "";
+
+        let list = [];
+        if (filter === "all" || filter === "general") {
+            list = list.concat(generalBooks.map(b => ({ book: b, branch: "" })));
         }
+        Object.keys(branchBooks).forEach(key => {
+            if (filter === "all" || filter === key) {
+                branchBooks[key].books.forEach(b => list.push({ book: b, branch: key.toUpperCase() }));
+            }
+        });
 
-        localStorage.setItem('bookstoreCart', JSON.stringify(cart));
+        list.forEach(item => {
+            const book = item.book;
+            const row = document.createElement("tr");
 
-        alert(name + ' added to cart!');
+            const cover = document.createElement("td");
+            cover.appendChild(makeCover(book));
+
+            const details = document.createElement("td");
+            const bold = document.createElement("b");
+            bold.textContent = book.name;
+            details.appendChild(bold);
+            if (book.publisher) {
+                details.appendChild(document.createElement("br"));
+                details.append("Publication: " + book.publisher);
+            }
+            if (item.branch) {
+                details.appendChild(document.createElement("br"));
+                details.append("Branch: " + item.branch);
+            }
+
+            const author = document.createElement("td");
+            author.textContent = book.author;
+
+            const price = document.createElement("td");
+            price.textContent = formatINR(book.price);
+
+            const action = document.createElement("td");
+            const button = document.createElement("button");
+            button.className = "cart";
+            button.textContent = "Add to Cart";
+            button.onclick = () => addBranchBook(book);
+            action.appendChild(button);
+
+            row.append(cover, details, author, price, action);
+            tableBody.appendChild(row);
+        });
     }
-</script> -->
+
+    document.getElementById("branchFilter").addEventListener("change", function () {
+        renderCatalogue(this.value);
+    });
+    renderCatalogue("all");
+</script>
+</body>
+</html>
 
    
 
-    
 
-</body>
-</html>
