@@ -50,7 +50,7 @@ const branchBooks = {
             { id: "eee3", name: "Basic Electrical Engineering",
               author: "V. K. Mehta", price: 480 },
             { id: "eee4", name: "Control Systems Engineering",
-              author: "I. J. Nagrath", price: 650 },
+              author: "I. J. Nagrath", price: 650, isbn: "9788122420081" },
             { id: "eee5", name: "Power Electronics",
               author: "P. S. Bimbhra", price: 700 },
             { id: "eee6", name: "Electrical Measurements",
@@ -77,8 +77,9 @@ const branchBooks = {
     }
 };
 
-// To force a specific cover for any book, add:  image: "images/eee1.jpg"
+// To force a specific cover for any book, add:  image: "images/eee4.jpg"
 // (or a full web link) to that book. It is used before anything else.
+// You can also add  isbn: "xxxxxxxxxxxxx"  to look up a cover by ISBN.
 
 const formatINR = amount =>
     amount.toLocaleString("en-IN", {
@@ -141,7 +142,18 @@ function fallbackCover(book) {
     return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
 }
 
-// Looks up a real cover online by title + author (Google Books, then Open Library)
+// Checks that an image URL really loads (and is not a tiny "no image" placeholder)
+function imageWorks(url) {
+    return new Promise(resolve => {
+        const t = new Image();
+        t.onload = () => resolve(t.naturalWidth > 40);
+        t.onerror = () => resolve(false);
+        t.src = url;
+    });
+}
+
+// Looks up a real cover online: ISBN first, then title + author
+// (Google Books, then Open Library)
 async function findCoverUrl(book) {
     const cacheKey = "cover:" + book.id + ":" + book.name;
     try {
@@ -150,6 +162,16 @@ async function findCoverUrl(book) {
     } catch (e) {}
 
     let url = null;
+
+    // If the book has an ISBN, try that cover first
+    if (book.isbn) {
+        const byIsbn = "https://covers.openlibrary.org/b/isbn/" +
+                       book.isbn + "-L.jpg?default=false";
+        if (await imageWorks(byIsbn)) {
+            try { localStorage.setItem(cacheKey, byIsbn); } catch (e) {}
+            return byIsbn;
+        }
+    }
 
     try {
         const q = encodeURIComponent("intitle:" + book.name + " inauthor:" + book.author);
