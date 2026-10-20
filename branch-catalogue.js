@@ -1,3 +1,8 @@
+// ====== BOOK IMAGE SIZE (change these two numbers to resize all book covers) ======
+const COVER_WIDTH  = 120;   // px
+const COVER_HEIGHT = 170;   // px (keep about 1.4 x the width)
+// ==================================================================================
+
 const branchBooks = {
     cse: {
         title: "Computer Science & Engineering",
@@ -191,7 +196,8 @@ function makeCover(book) {
     const img = document.createElement("img");
     img.alt = book.name;
     img.style.cssText =
-        "width:85px;height:120px;object-fit:contain;display:block;margin:auto;";
+        "width:" + COVER_WIDTH + "px;height:" + COVER_HEIGHT +
+        "px;object-fit:contain;display:block;margin:auto;";
 
     const fallback = fallbackCover(book);
 
