@@ -52,10 +52,6 @@ const branchBooks = {
               author: "Nagrath and Kothari", price: 750 },
             { id: "eee3", name: "Basic Electrical Engineering",
               author: "V. K. Mehta", price: 480 },
-            // If this cover is still wrong, save a photo as images/eee4.jpg and use:
-            // { id: "eee4", name: "...", author: "...", price: 650, image: "images/eee4.jpg" }
-            { id: "eee4", name: "Control Systems Engineering",
-              author: "I. J. Nagrath", price: 650 },
             { id: "eee5", name: "Power Electronics",
               author: "P. S. Bimbhra", price: 700 },
             { id: "eee6", name: "Electrical Measurements",
@@ -82,7 +78,7 @@ const branchBooks = {
     }
 };
 
-// To force a specific cover for any book, add:  image: "images/eee4.jpg"
+// To force a specific cover for any book, add:  image: "images/eee1.jpg"
 // (or a full web link) to that book. It is used before anything else.
 // You can also add  isbn: "xxxxxxxxxxxxx"  to look up a cover by ISBN.
 
