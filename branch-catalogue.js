@@ -3,6 +3,9 @@ const COVER_WIDTH  = 120;   // px
 const COVER_HEIGHT = 170;   // px (keep about 1.4 x the width)
 // ==================================================================================
 
+// Change this number (e.g. "v3") any time you want browsers to forget saved covers
+const CACHE_VERSION = "v2";
+
 const branchBooks = {
     cse: {
         title: "Computer Science & Engineering",
@@ -49,8 +52,10 @@ const branchBooks = {
               author: "Nagrath and Kothari", price: 750 },
             { id: "eee3", name: "Basic Electrical Engineering",
               author: "V. K. Mehta", price: 480 },
+            // If this cover is still wrong, save a photo as images/eee4.jpg and use:
+            // { id: "eee4", name: "...", author: "...", price: 650, image: "images/eee4.jpg" }
             { id: "eee4", name: "Control Systems Engineering",
-              author: "I. J. Nagrath", price: 650, isbn: "9788122420081" },
+              author: "I. J. Nagrath", price: 650 },
             { id: "eee5", name: "Power Electronics",
               author: "P. S. Bimbhra", price: 700 },
             { id: "eee6", name: "Electrical Measurements",
@@ -142,20 +147,20 @@ function fallbackCover(book) {
     return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
 }
 
-// Checks that an image URL really loads (and is not a tiny "no image" placeholder)
+// Checks that an image URL really loads and is big enough to be a real cover
 function imageWorks(url) {
     return new Promise(resolve => {
         const t = new Image();
-        t.onload = () => resolve(t.naturalWidth > 40);
+        t.onload = () => resolve(t.naturalWidth > 80 && t.naturalHeight > 100);
         t.onerror = () => resolve(false);
         t.src = url;
     });
 }
 
-// Looks up a real cover online: ISBN first, then title + author
+// Looks up a real cover online: ISBN first (if given), then title + author
 // (Google Books, then Open Library)
 async function findCoverUrl(book) {
-    const cacheKey = "cover:" + book.id + ":" + book.name;
+    const cacheKey = "cover:" + CACHE_VERSION + ":" + book.id + ":" + book.name;
     try {
         const cached = localStorage.getItem(cacheKey);
         if (cached) return cached;
@@ -173,24 +178,26 @@ async function findCoverUrl(book) {
         }
     }
 
+    // Google Books search by title + author
     try {
         const q = encodeURIComponent("intitle:" + book.name + " inauthor:" + book.author);
         const res = await fetch(
             "https://www.googleapis.com/books/v1/volumes?q=" + q +
-            "&maxResults=5&printType=books"
+            "&maxResults=8&printType=books"
         );
         const data = await res.json();
-        const hit = (data.items || []).find(
-            i => i.volumeInfo && i.volumeInfo.imageLinks &&
-                 i.volumeInfo.imageLinks.thumbnail
-        );
-        if (hit) {
-            url = hit.volumeInfo.imageLinks.thumbnail
+        const candidates = (data.items || [])
+            .filter(i => i.volumeInfo && i.volumeInfo.imageLinks &&
+                         i.volumeInfo.imageLinks.thumbnail)
+            .map(i => i.volumeInfo.imageLinks.thumbnail
                 .replace("http://", "https://")
-                .replace("&edge=curl", "");
+                .replace("&edge=curl", ""));
+        for (const c of candidates) {
+            if (await imageWorks(c)) { url = c; break; }
         }
     } catch (e) {}
 
+    // Open Library search by title + author
     if (!url) {
         try {
             const res = await fetch(
@@ -201,8 +208,9 @@ async function findCoverUrl(book) {
             );
             const data = await res.json();
             if (data.docs && data.docs[0] && data.docs[0].cover_i) {
-                url = "https://covers.openlibrary.org/b/id/" +
-                      data.docs[0].cover_i + "-M.jpg";
+                const c = "https://covers.openlibrary.org/b/id/" +
+                          data.docs[0].cover_i + "-M.jpg";
+                if (await imageWorks(c)) url = c;
             }
         } catch (e) {}
     }
@@ -231,13 +239,7 @@ function makeCover(book) {
 
     img.src = fallback;
     findCoverUrl(book).then(url => {
-        if (!url) return;
-        const test = new Image();
-        test.onload = () => {
-            // ignore tiny "no image" placeholders
-            if (test.naturalWidth > 40) img.src = url;
-        };
-        test.src = url;
+        if (url) img.src = url;
     });
     return img;
 }
